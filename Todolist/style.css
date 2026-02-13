@@ -1,0 +1,239 @@
+/* 1. Reset & Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #8C1AF6 0%, #6200ee 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+}
+
+.container {
+    background: #ffffff;
+    width: 95%;
+    max-width: 450px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+/* 2. Rewards Dashboard */
+.reward-panel {
+    display: flex;
+    justify-content: space-around;
+    background: #f3e5f5;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    border: 2px solid #8C1AF6;
+    font-weight: bold;
+    color: #6200ee;
+}
+
+/* 3. Input & Options Box */
+.box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.input-row {
+    display: flex;
+    gap: 10px;
+}
+
+#task-input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    outline: none;
+    transition: 0.3s;
+}
+
+#task-input:focus {
+    border-color: #8C1AF6;
+}
+
+#addBtn {
+    background: #8C1AF6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.options-row {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    font-size: 14px;
+    color: #666;
+}
+
+#task-time {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+}
+
+/* 4. Task List & Items */
+#taskList {
+    list-style: none;
+}
+
+#taskList li {
+    background: #f8f9fa;
+    margin-bottom: 12px;
+    padding: 15px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 6px solid #8C1AF6;
+    animation: slideIn 0.3s ease forwards;
+}
+
+/* 5. Custom Checkbox & Tick Logic */
+.task-content {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    flex: 1;
+}
+
+.custom-checkbox {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #8C1AF6;
+    border-radius: 50%;
+    margin-right: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.check-icon svg {
+    display: none; /* Default mein tick nahi dikhega */
+}
+
+/* Completed State */
+.completed {
+    background: #f1f1f1 !important;
+    border-left-color: #28a745 !important;
+    opacity: 0.7;
+}
+
+.completed .custom-checkbox {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.completed .check-icon svg {
+    display: block; /* Click karne par tick dikhega */
+    fill: white !important;
+}
+
+.completed .task-text {
+    text-decoration: line-through;
+    color: #888;
+}
+
+/* 6. Extra UI Elements */
+.task-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.time-tag {
+    font-size: 11px;
+    color: #8C1AF6;
+    font-weight: bold;
+    margin-top: 3px;
+}
+
+.delete-btn {
+    background: #ff4d4d;
+    border: none;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* 7. Animations */
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(0.9); }
+}
+
+.removing {
+    animation: fadeOut 0.3s ease forwards;
+}
+
+/* 8. Mobile Responsive Design */
+@media (max-width: 480px) {
+    body {
+        padding-top: 15px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .input-row {
+        flex-direction: column;
+    }
+
+    #addBtn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .options-row {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .reward-panel {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+.level-popup {
+    position: fixed;
+    top: -100%; /* Shuru mein chhupa rahega */
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-align: center;
+    z-index: 1000;
+    transition: 0.5s ease-in-out;
+    border: 3px solid #8C1AF6;
+}
+.level-popup.show { top: 20px; } /* Click par niche aayega */
+.level-popup button {
+    background: #8C1AF6; color: white; border: none;
+    padding: 8px 20px; border-radius: 5px; margin-top: 10px; cursor: pointer;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Pro Todo List</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- 1. Google Icons (For Add/Schedule icons) -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+    <!-- 2. Confetti Library (Level up celebration ke liye) -->
+    <script src="https://cdn.jsdelivr.net"></script>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- XP & Level Dashboard (Naya Reward Panel) -->
+        <div class="reward-panel">
+            <div class="stat">⭐ <span id="user-points">0</span> XP</div>
+            <div class="stat">🏆 Lvl <span id="user-level">1</span></div>
+        </div>
+
+        <div class="box">
+            <!-- Purana Input Row -->
+            <div class="input-row">
+                <input type="text" id="task-input" placeholder="Enter a new task" autocomplete="off">
+                <button id="addBtn">Add <span class="material-symbols-outlined"></span></button>
+            </div>
+            <!-- Custom Level Up Pop-up -->
+            <div id="level-popup" class="level-popup">
+                <h3>🎊 LEVEL UP! 🎊</h3>
+                <p>Mubarak ho! Aap Level <span id="pop-level"></span> par pahunch gaye!</p>
+                <button onclick="closePopup()">Awesome!</button>
+            </div>
+
+
+            <!-- Naya Options Row (Time & Daily Repeat) -->
+            <div class="options-row">
+                <div class="time-input-group">
+                    <span class="material-symbols-outlined" style="font-size: 20px; color: #666;">schedule</span>
+                    <input type="time" id="task-time">
+                </div>
+                <label class="daily-check">
+                    <input type="checkbox" id="is-daily"> Daily? (🔄)
+                </label>
+            </div>
+        </div>
+
+        <!-- Task List Container -->
+        <ul id="taskList">
+            <!-- JavaScript yahan tasks inject karega -->
+        </ul>
+    </div>
+
+    <!-- 3. Success Sound (Ding sound on check) -->
+    <audio id="success-sound" src="https://actions.google.com" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
